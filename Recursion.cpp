@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+void fun(int  num){
+    if(num==0){
+        cout<<"Stopped";
+        return;
+    }
+    cout<<"Hello";
+     fun(num-1);
+    
+    
+    
+}
+int main(){
+    int num;
+    cin>>num;
+    fun(num);
+}
