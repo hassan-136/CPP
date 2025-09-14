@@ -6,13 +6,11 @@ int main(){
     q.push(2);
     q.push(19);
     q.push(11);
-     cout<<q.size()<<endl;
-     cout<<q.empty()<<endl;
-     
-    while(!q.empty()){
-        cout<<q.front()<<" ";
-        q.pop();
-    }
-   
+  int n = q.size();
+  while(n--){
+    cout<<q.front()<<" ";
+   q.push(q.front());
+   q.pop();
+  }
 
 }
