@@ -24,7 +24,7 @@ Node* addLast(Node* head, int value) {
         temp = temp->next;
     }
     temp->next = newNode; // link new node at end
-    return head; // head doesn’t change
+    return head; // head doesn’t change 
 }
 
 // Function to display list
