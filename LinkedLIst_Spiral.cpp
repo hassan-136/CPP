@@ -2,23 +2,23 @@
 #include <vector>
 using namespace std;
 
-// ListNode class
-struct ListNode {
+
+struct Node {
     int val;
-    ListNode* next;
-    ListNode(int value) {
+    Node* next;
+    Node(int value) {
         val=value;
         next = NULL;    
     }
 };
-vector<vector<int> > spiralMatrix(int m, int n, ListNode* head) {
+vector<vector<int> > spiralMatrix(int m, int n, Node* head) {
     vector<vector<int> > matrix(m, vector<int>(n, -1));
     
     if (!head) return matrix;
     
     int top = 0, bottom = m - 1;
     int left = 0, right = n - 1;
-    ListNode* current = head;
+    Node* current = head;
     
     while (top <= bottom && left <= right) {
         // Left to right
@@ -56,8 +56,6 @@ vector<vector<int> > spiralMatrix(int m, int n, ListNode* head) {
     
     return matrix;
 }
-
-// Function to print matrix
 void printMatrix(vector<vector<int> > matrix) {
     cout << "\nSpiral Matrix:\n";
     for (int i = 0; i < matrix.size(); i++) {
@@ -70,20 +68,15 @@ void printMatrix(vector<vector<int> > matrix) {
 
 int main() {
     int m, n, numElements;
-    
-    // Get matrix dimensions from user
     cout << "Enter number of rows (m): ";
     cin >> m;
     cout << "Enter number of columns (n): ";
     cin >> n;
-    
-    // Get number of elements for linked list
+
     cout << "Enter number of elements for linked list: ";
     cin >> numElements;
-    
-    // Create linked list based on user input
-    ListNode* head = nullptr;
-    ListNode* current = nullptr;
+    Node* head = nullptr;
+    Node* current = nullptr;
     
     if (numElements > 0) {
         cout << "Enter " << numElements << " elements:\n";
@@ -93,28 +86,16 @@ int main() {
             cin >> value;
             
             if (!head) {
-                head = new ListNode(value);
+                head = new Node(value);
                 current = head;
             } else {
-                current->next = new ListNode(value);
+                current->next = new Node(value);
                 current = current->next;
             }
         }
     }
-    
-    // Create spiral matrix
+  
     vector<vector<int> > result = spiralMatrix(m, n, head);
-    
-    // Print the result
+
     printMatrix(result);
-    
-    // Clean up memory
-    current = head;
-    while (current) {
-        ListNode* temp = current;
-        current = current->next;
-        delete temp;
-    }
-    
-    return 0;
 }
